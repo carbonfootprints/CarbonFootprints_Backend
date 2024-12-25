@@ -1,20 +1,32 @@
 import express from "express";
+// // import chats from "../backend/data/data.js";
 import dotenv from "dotenv";
-import cors from "cors";
+// import cors from "cors";
 import ConnectDB from "./config/db.js";
+import userRoutes from "./routes/userRoutes.js"
+
 dotenv.config();
 ConnectDB();
-const PORT= 5000  || process.env.PORT;
+const PORT= 3000  || process.env.PORT;
 const app = express();
 app.use(express.json());
-app.use(cors());
+// app.use(cors());
 
 app.get('/',(req,res)=>{
     res.send("API is running");
 });
+
+app.use('/api/user',userRoutes);
+
+
 app.listen(PORT,console.log(`Server listening to port ${PORT}`));
 
-
-
-//carbonfootprint882024
-//1LGr2bJVZqgr9gmB
+app.use((err,req,res,next)=>{
+    const statusCode = err.statusCode || 500;
+    const message = err.message || 'internal Server Error';
+    res.status(statusCode).json({
+        success:false,
+        statusCode,
+        message
+    })
+});
