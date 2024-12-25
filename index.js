@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 // import cors from "cors";
 import ConnectDB from "./config/db.js";
 import userRoutes from "./routes/userRoutes.js"
+import directRoutes from "./routes/DirectGHGRoutes.js"
 
 dotenv.config();
 ConnectDB();
@@ -17,6 +18,7 @@ app.get('/',(req,res)=>{
 });
 
 app.use('/api/user',userRoutes);
+app.use('/api/direct',directRoutes);
 
 
 app.listen(PORT,console.log(`Server listening to port ${PORT}`));
