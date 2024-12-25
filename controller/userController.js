@@ -136,10 +136,9 @@ export const deleteUser = async (req, res) => {
 };
 
 
-
 export const logoutUser = async (req, res) => {
     try {
-        // Destroy session or remove token (depending on implementation)
+        res.clearCookie('token'); // Clear the token cookie, if used
         return res.status(200).json({
             status: 200,
             message: "Logged out successfully!",
