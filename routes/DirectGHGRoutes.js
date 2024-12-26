@@ -1,7 +1,6 @@
 import express from "express";
 import {
   saveOrganisation,
-  createDirectGHG,
   saveBabPernambet,
   saveBabConsumption,
   saveBabThirumudivakkam,
@@ -10,7 +9,7 @@ import {
 
 const router = express.Router();
 router.post("/organisation", saveOrganisation);
-router.post("/create", createDirectGHG);
+// router.post("/create", createDirectGHG);
 router.post("/babPernambet", saveBabPernambet);
 router.post("/babConsumption", saveBabConsumption);
 router.post("/babThirumudivakkam", saveBabThirumudivakkam);

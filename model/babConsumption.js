@@ -7,18 +7,25 @@ const BabConsumptionSchema = new mongoose.Schema(
             ref: "DirectGHG", // Reference to DirectGHG schema
             required: true,
         },
-        field1: {
-            type: String,
-            required: true,
+        date: {
+            type: Date,
+            required: true, // Date field
         },
-        field2: {
-            type: String,
-            required: true,
+        woodenPalletsKg: {
+            type: Number,
+            required: true, // Wooden Pallets in kg
         },
-        // Add more fields as needed
+        firewoodKg: {
+            type: Number,
+            required: true, // Firewood in kg
+        },
+        dieselLitres: {
+            type: Number,
+            required: true, // Diesel in litres
+        },
     },
     {
-        timestamps: true,
+        timestamps: true, // Automatically creates createdAt and updatedAt fields
     }
 );
 

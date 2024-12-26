@@ -7,15 +7,22 @@ const BabThirumudivakkamSchema = new mongoose.Schema(
             ref: "DirectGHG", // Reference to DirectGHG schema
             required: true,
         },
-        field1: {
-            type: String,
-            required: true,
+        date: {
+            type: Date, // Date type for storing date
+            required: true, // Make it required
         },
-        field2: {
-            type: Number,
-            required: true,
+        woodenPalletsKg: {
+            type: Number, // Numeric field for Wooden Pallets in kg
+            required: true, // Make it required
         },
-        // Add more fields as needed
+        firewoodKg: {
+            type: Number, // Numeric field for Firewood in kg
+            required: true, // Make it required
+        },
+        dieselLitres: {
+            type: Number, // Numeric field for Diesel in litres
+            required: true, // Make it required
+        },
     },
     {
         timestamps: true,
