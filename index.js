@@ -10,14 +10,19 @@ ConnectDB();
 
 const PORT = process.env.PORT || 3000;
 const app = express();
-
-// Enable CORS for all routes
 const corsOptions = {
-    origin: ["http://localhost:5173"], // Frontend origin
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"], // Allow necessary headers
-};
-app.use(cors(corsOptions));
+    origin: 'http://localhost:5173', // Replace with your frontend URL
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
+    credentials: true, // Allow credentials (cookies, authorization headers, etc.)
+  };
+  
+  // Enable CORS with options
+  app.use(cors(corsOptions));
+  
+  // Handle preflight requests for all routes
+  app.options('*', cors(corsOptions)); 
+  
 
 app.use(express.json());
 
