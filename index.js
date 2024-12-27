@@ -16,7 +16,7 @@ app.use(express.json());
 
 // CORS Middleware Configuration
 const corsOptions = {
-    origin: ["http://localhost:5173", "https://your-frontend-production-domain.com"], // Add your frontend URL(s) here
+    origin: ["http://localhost:5173", "https://carbon-footprint-front-end.vercel.app/"], // Add your frontend URL(s) here
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"], // Add other custom headers if needed
 };
@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
     res.send("API is running");
 });
 
-app.use('/api/user', userRoutes);
+app.use('/api/user', userRoutes);s
 app.use('/api/direct', directRoutes);
 
 // Error Handling Middleware
