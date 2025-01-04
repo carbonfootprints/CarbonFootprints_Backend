@@ -10,7 +10,12 @@ ConnectDB();
 
 const PORT = process.env.PORT || 3000;
 const app = express();
-app.use(cors("*"));
+const corsOptions = {
+  origin: "https://carbon-footprint-front-end.vercel.app", // Specify the frontend URL
+  credentials: true, // Allow credentials (cookies, etc.)
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.get("/", (req, res) => {
