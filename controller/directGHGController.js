@@ -203,7 +203,7 @@ export const saveBabConsumption = async (req, res) => {
 export const saveBabThirumudivakkam = async (req, res) => {
     try {
         // Destructure the required fields from the request body
-        const { directGHGId, date, woodenPalletsKg, firewoodKg, dieselLitres } = req.body;
+        const { directGHGId, date, woodenPallets, firewood, diesel } = req.body;
 
         // Check if the DirectGHG record exists
         const directGHG = await DirectGHG.findById(directGHGId);
@@ -218,9 +218,9 @@ export const saveBabThirumudivakkam = async (req, res) => {
         const babThirumudivakkam = new BabThirumudivakkam({
             directGHGId,
             date,
-            woodenPalletsKg,
-            firewoodKg,
-            dieselLitres,
+            woodenPalletsKg:woodenPallets,
+            firewoodKg:firewood,
+            dieselLitres:diesel,
         });
 
         // Save the BabThirumudivakkam record to the database
