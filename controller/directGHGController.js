@@ -9,7 +9,7 @@ import Organisation from "../model/organisationModel.js";
 
 
 // Save Organisation data
-export const saveOrganisation = async (req, res) => {
+const saveOrganisation = async (req, res) => {
     try {
         const {
             organizationName, // Ensure these match
@@ -37,18 +37,15 @@ export const saveOrganisation = async (req, res) => {
             description: facilityDescription,
         });
 
-        // Save the Organisation record
         await organisation.save();
 
-        // Create DirectGHG record for the newly created organisation
         const directGHG = new DirectGHG({
-            organisationId: organisation._id, // Associate with the organisation
+            organisationId: organisation._id,
             babThirumudivakkam: null,
             babConsumption: null,
             babPernambet: null,
         });
 
-        // Save the DirectGHG record
         await directGHG.save();
 
         return res.status(201).json({
@@ -64,6 +61,7 @@ export const saveOrganisation = async (req, res) => {
         });
     }
 };
+
 
 // // Create a new DirectGHG entry after Organisation is saved
 // export const createDirectGHG = async (req, res) => {
