@@ -10,26 +10,7 @@ ConnectDB();
 
 const PORT = process.env.PORT || 3000;
 const app = express();
-const corsOptions = {
-    origin: function (origin, callback) {
-      const allowedOrigins = ['http://localhost:5173', 'https://carbon-footprint-front-end.vercel.app'];
-      if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-        callback(null, true); // Allow the request
-      } else {
-        callback(new Error('Not allowed by CORS')); // Reject the request
-      }
-    },
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-    allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
-    credentials: true, // Allow credentials (cookies, authorization headers, etc.)
-  };
-  
-  // Enable CORS with options
-  app.use(cors(corsOptions));
-  
-  // Handle preflight requests for all routes
-  app.options('*', cors(corsOptions)); 
-  
+app.use(cors("*"));
 app.use(express.json());
 
 app.get("/", (req, res) => {
