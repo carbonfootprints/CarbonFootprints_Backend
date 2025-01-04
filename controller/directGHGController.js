@@ -9,7 +9,7 @@ import Organisation from "../model/organisationModel.js";
 
 
 // Save Organisation data
-const saveOrganisation = async (req, res) => {
+export const saveOrganisation = async (req, res) => {
     try {
         const {
             organizationName, // Ensure these match
