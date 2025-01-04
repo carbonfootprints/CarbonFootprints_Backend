@@ -12,30 +12,29 @@ import Organisation from "../model/organisationModel.js";
 export const saveOrganisation = async (req, res) => {
     try {
         const {
-            name,
-            sitename,
-            registernumber,
+            organizationName, // Ensure these match
+            siteName,
+            registrationNumber,
             coordinates,
             address,
-            contactperson,
+            contactPerson,
             email,
-            phonenumber,
-            noofemployees,
-            description,
+            telephone,
+            numberOfEmployees,
+            facilityDescription,
         } = req.body;
 
-        // Create a new Organisation record
         const organisation = new Organisation({
-            name,
-            sitename,
-            registernumber,
+            name: organizationName, // Map frontend to backend names
+            sitename: siteName,
+            registernumber: registrationNumber,
             coordinates,
             address,
-            contactperson,
+            contactperson: contactPerson,
             email,
-            phonenumber,
-            noofemployees,
-            description,
+            phonenumber: telephone,
+            noofemployees: numberOfEmployees,
+            description: facilityDescription,
         });
 
         // Save the Organisation record
