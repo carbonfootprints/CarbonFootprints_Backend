@@ -10,12 +10,7 @@ ConnectDB();
 
 const PORT = process.env.PORT || 3000;
 const app = express();
-app.use(
-  cors({
-    origin: '*', // Allow only this origin
-    credentials: true, // Allow credentials (cookies, headers, etc.)
-  })
-);
+app.use(cors("*"));
 app.use(express.json());
 
 app.get("/", (req, res) => {
