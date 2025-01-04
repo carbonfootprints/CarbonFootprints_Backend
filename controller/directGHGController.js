@@ -104,7 +104,8 @@ export const saveOrganisation = async (req, res) => {
 // Save BabPernambet data
 export const saveBabPernambet = async (req, res) => {
     try {
-        const { directGHGId, date, woodenPalletsKg, firewoodKg, dieselLitres } = req.body;
+        const { directGHGId, date, woodenPallets, firewood, diesel } = req.body;
+console.log(req.body);
 
         // Check if DirectGHG exists
         const directGHG = await DirectGHG.findById(directGHGId);
@@ -116,7 +117,7 @@ export const saveBabPernambet = async (req, res) => {
         }
 
         // Validate the input values (optional, you can add more validation logic as needed)
-        if (isNaN(woodenPalletsKg) || isNaN(firewoodKg) || isNaN(dieselLitres)) {
+        if (isNaN(woodenPallets) || isNaN(firewood) || isNaN(diesel)) {
             return res.status(400).json({
                 status: 400,
                 message: "Wooden Pallets (kg), Firewood (kg), and Diesel (litres) must be numbers.",
@@ -127,9 +128,9 @@ export const saveBabPernambet = async (req, res) => {
         const babPernambet = new BabPernambet({
             directGHGId,
             date,
-            woodenPalletsKg,
-            firewoodKg,
-            dieselLitres,
+            woodenPalletsKg:woodenPallets,
+            firewoodKg:firewood,
+            dieselLitres:diesel,
         });
         await babPernambet.save();
 
