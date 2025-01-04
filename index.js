@@ -27,7 +27,7 @@ const app = express();
   // Enable CORS with options
 app.use(
   cors({
-    origin: "https://carbon-footprint-front-end.vercel.app", // Replace with your frontend's domain
+    origin: ['http://localhost:5173', 'https://carbon-footprint-front-end.vercel.app'], // Replace with your frontend's domain
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
   })
