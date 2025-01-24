@@ -63,7 +63,11 @@ export const saveOrganisation = async (req, res) => {
         return res.status(201).json({
             status: 201,
             message: "Organisation and corresponding Direct GHG record saved successfully.",
-            data: directGHG,
+            data: {
+                directGHG: directGHG,
+                indirectGHG: indirectGHG // Include indirectGHG here
+            },
+            
         });
     } catch (error) {
         console.error("Error saving Organisation and Direct GHG data:", error);
