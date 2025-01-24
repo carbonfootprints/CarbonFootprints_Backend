@@ -55,6 +55,11 @@ const ProductsUsedSchema = new mongoose.Schema({
 // Main schema for indirect collection
 const IndirectGHGSchema = new mongoose.Schema(
     {
+        organisationId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Organisation", // Reference to Organisation schema
+            required: true,
+        },
         purchased_electricity: PurchasedElectricitySchema,
         purchased_transportation: TransportationSchema,
         products_used: ProductsUsedSchema,

@@ -4,6 +4,8 @@ import BabConsumption from "../model/babConsumption.js";
 import BabThirumudivakkam from "../model/babThirumudivakkam.js";
 import Organisation from "../model/organisationModel.js";
 
+import IndirectGHG from "../model/indirectGHGModel.js";
+
 
 
 
@@ -47,6 +49,16 @@ export const saveOrganisation = async (req, res) => {
         });
 
         await directGHG.save();
+
+        const indirectGHG = new IndirectGHG({
+            organisationId: organisation._id,
+            purchased_electricity:null,
+            purchased_transportation:null,
+            products_used:null,
+
+        });
+
+        await indirectGHG.save();
 
         return res.status(201).json({
             status: 201,
